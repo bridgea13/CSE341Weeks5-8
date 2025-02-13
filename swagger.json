@@ -5,7 +5,7 @@
       "description": "Recipes API",
       "version": "1.0.0"
     },
-    "host": "cse341aab2025.onrender.com",
+    "host": "cse341weeks5-8.onrender.com",
     "basePath": "/",
     "schemes": [
       "https"

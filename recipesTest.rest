@@ -46,48 +46,48 @@ Accept: application/json
 ####
 
 # Test the GET route to get all recipes w/ render
-GET https://cse341aab2025.onrender.com/recipes HTTP/1.1
+GET https://cse341weeks5-8.onrender.com/recipes HTTP/1.1
 Accept: application/json
 ###
 
 # Test the GET route to get a specific recipe by ID w/ render
-GET https://cse341aab2025.onrender.com/recipes/**** HTTP/1.1
+GET https://cse341weeks5-8.onrender.com/recipes/67ad4a4618bedfcfb967f6b1 HTTP/1.1
 Accept: application/json
 ###
 
 # Test the POST route to create a new recipe w/ render
-POST https://cse341aab2025.onrender.com/recipes HTTP/1.1
+POST https://cse341weeks5-8.onrender.com/recipes HTTP/1.1
 Content-Type: application/json
 
 {
-    "recipeName": "Chicken and Carrot Noodle Soup",
+    "recipeName": "Beef with Barley Soup",
     "genre": "American Homestyle",
     "mealType": "Dinner",
     "servings": "4",    
-    "ingredients": "Beef broth, Carrots, Noodles, Chicken, Celery",
-    "directions": "Dice chicken, carrots, celery. Add to boiling chicken broth, add noodles.",
-    "recipeOwner": "Granpa Bud"
+    "ingredients": "Beef broth, Carrots, Noodles, beef, Celery, barley",
+    "directions": "Dice beef, carrots, celery. Add to boilingbeef broth, add barley.",
+    "recipeOwner": "Nonnie"
 }
 
 ####
 
 # Test the PUT route to edit an existing recipe w/ render
-PUT https://cse341aab2025.onrender.com/recipes/ HTTP/1.1
+PUT https://cse341weeks5-8.onrender.com/recipes/67ad53d99e01a53d5f4b73d2 HTTP/1.1
 Content-Type: application/json
 
 {
-    "recipeName": "Chicken Noodle Soup",
-    "genre": "American",
-    "mealType": "Lunch, Dinner",
+    "recipeName": "Beef Barley Soup",
+    "genre": "American Homestyle",
+    "mealType": "Dinner",
     "servings": "6",    
-    "ingredients": "Chicken broth, Carrots, Noodles, Chicken, Celery",
-    "directions": "Chop chicken, carrots, celery. Add to boiling chicken broth, add noodles.",
-    "recipeOwner": "Granpa Pete"
+    "ingredients": "Beef broth, Carrots, Noodles, beef, Celery, barley",
+    "directions": "Dice beef, carrots, celery. Add to boilingbeef broth, add barley.",
+    "recipeOwner": "Nonnie"   
 }
 
 ####
 
 # Test the DELETE route to delete a recipe w/ render
-DELETE https://cse341aab2025.onrender.com/recipes/*** HTTP/1.1
+DELETE https://cse341weeks5-8.onrender.com/recipes/67ad53d99e01a53d5f4b73d2 HTTP/1.1
 Accept: application/json
 ####
