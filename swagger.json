@@ -11,26 +11,7 @@
       "https"
     ],
     "paths": {
-      "/": {
-        "get": {
-          "description": "",
-          "responses": {
-            "200": {
-              "description": "OK"
-            }
-          }
-        }
-      },
-      "/hello": {
-        "get": {
-          "description": "",
-          "responses": {
-            "200": {
-              "description": "OK"
-            }
-          }
-        }
-      },
+      
       "/recipes/{id}": {
         "get": {
           "description": "",
