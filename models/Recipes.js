@@ -4,7 +4,7 @@ const RecipeSchema = new mongoose.Schema({
     recipeName: { type: String, required: true },
     genre: { type: String },
     mealType: { type: String },
-    servings: { type: Number, required: true, maxlength: 3, minlength: 1 },    
+    servings: { type: Number, required: true, max: 3, min: 1 },    
     ingredients: { type: String, required: true },
     directions: { type: String, required: true },
     recipeOwner: { type: String, maxlength: 30 },
