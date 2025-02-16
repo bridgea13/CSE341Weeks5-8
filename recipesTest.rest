@@ -41,7 +41,7 @@ Content-Type: application/json
 ####
 
 # Test the DELETE route to delete a recipe
-DELETE http://localhost:3000/recipes/679ac23af77a4db4c47b2f15 HTTP/1.1
+DELETE http://localhost:3000/recipes/67ad4a4618bedfcfb967f6b1 HTTP/1.1
 Accept: application/json
 ####
 

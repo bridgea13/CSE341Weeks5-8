@@ -45,7 +45,7 @@ exports.deleteRecipe = async (req, res) => {
         return res.status(404).json({ message: 'Recipe not found' });
       }
   
-      res.status(200).json({ message: 'Recipe deleted successfully', recipe });
+      res.status(200).json();
     } catch (error) {
       console.error(error.message);
   
