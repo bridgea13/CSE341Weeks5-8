@@ -136,7 +136,7 @@ exports.editRecipe = async (req, res) => {
         return res.status(404).json({ message: 'Recipe not found.' });
       }
   
-      res.status(200).json({ message: 'Recipe updated successfully', recipe: updatedRecipe });
+      res.status(204).json();
     } catch (error) {
       console.error('Error updating recipe:', error);
   

@@ -13,13 +13,13 @@ POST http://localhost:3000/recipes HTTP/1.1
 Content-Type: application/json
 
 {
-    "recipeName": "Chicken and Carrot Noodle Soup",
-    "genre": "American Homestyle",
+    "recipeName": "Tuna Chowder",
+    "genre": "American",
     "mealType": "Dinner",
     "servings": "4",    
-    "ingredients": "Beef broth, Carrots, Noodles, Chicken, Celery",
-    "directions": "Dice chicken, carrots, celery. Add to boiling chicken broth, add noodles.",
-    "recipeOwner": "Grandpa Bud"   
+    "ingredients": "Chicken broth, Carrots, can of tuna, chedder cheese, Onion",
+    "directions": "Grate cheese, carrots, Onion. Add to boiling chicken broth.",
+    "recipeOwner": "Grandma Bridge"   
 }
 
 ####
@@ -32,7 +32,7 @@ Content-Type: application/json
     "recipeName": "Chicken and dumplings",
     "genre": "American",
     "mealType": "Lunch, Dinner",
-    "servings": "6",    
+    "servings": "5",    
     "ingredients": "Chicken broth, Carrots, Noodles, Chicken, Celery",
     "directions": "Chop chicken, carrots, celery. Add to boiling chicken broth, add noodles.",
     "recipeOwner": "Granpa Pete"

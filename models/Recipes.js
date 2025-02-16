@@ -4,10 +4,10 @@ const RecipeSchema = new mongoose.Schema({
     recipeName: { type: String, required: true },
     genre: { type: String },
     mealType: { type: String },
-    servings: { type: String, required: true },    
+    servings: { type: Number, required: true, maxlength: 3, minlength: 1 },    
     ingredients: { type: String, required: true },
     directions: { type: String, required: true },
-    recipeOwner: { type: String },
+    recipeOwner: { type: String, maxlength: 30 },
 });
 
 module.exports = mongoose.model('Recipe', RecipeSchema);
