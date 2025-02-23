@@ -1,8 +1,15 @@
 const express = require('express');
 const app = express();
+const morgan = require('morgan');
+//const dotenv = require('dotenv')
 const connectDB = require('./db'); // Adjust path to the db.js file
 require('dotenv').config(); // Load environment variables
 const port = 3000;
+
+//dotenv.config({ path: './config/config.env'})
+if (process.env.NODE_ENV === 'development')  {
+    app.use(morgan('dev'))
+}
 
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./swagger.json');
