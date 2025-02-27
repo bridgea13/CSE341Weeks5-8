@@ -1,3 +1,4 @@
+const path = require ('path');
 const express = require('express');
 const app = express();
 const morgan = require('morgan');
@@ -7,8 +8,11 @@ const connectDB = require('./db'); // Adjust path to the db.js file
 require('dotenv').config(); // Load environment variables
 
 //handlebars
-app.engine('handlebars', engine({defaultLayout: 'main'}));
+app.engine('.hbs', engine({defaultLayout: 'main', extname: '.hbs'}));
 app.set('view engine', '.hbs');
+
+//static folder
+app.use(express.static(path.join(__dirname, 'public')))
 
 const port = process.env.PORT || 3000;
 
@@ -27,6 +31,9 @@ app.use(express.urlencoded({ extended: true }));
 // Confirm that the /recipes routes are being used
 console.log('Using /recipes routes...');
 app.use('/', require('./routes'));
+app.use('/login', (req, res) => {
+    res.send('Login Page');
+});
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.listen(
