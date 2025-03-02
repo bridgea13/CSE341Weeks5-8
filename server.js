@@ -1,61 +1,66 @@
-const path = require ('path');
+const path = require('path');
 const express = require('express');
 const passport = require('passport');
 const session = require('express-session');
 const app = express();
 const morgan = require('morgan');
-//const dotenv = require('dotenv')
 const { engine } = require('express-handlebars');
-const connectDB = require('./db'); // Adjust path to the db.js file
+const connectDB = require('./db'); 
 require('dotenv').config(); // Load environment variables
 
-//passport config
-require('./config/passport')(passport)
+// Passport Config
+require('./config/passport')(passport);
 
-//handlebars
-app.engine('.hbs', engine({defaultLayout: 'main', extname: '.hbs'}));
+// Connect Database
+connectDB();
+
+
+app.set('views', path.join(__dirname, 'views'))
+
+// Handlebars Setup
+app.engine('.hbs', engine({ defaultLayout: 'main', extname: '.hbs' }));
 app.set('view engine', '.hbs');
 
-//sessions
+// Body Parser
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// Sessions
 app.use(session({
     secret: 'keyboard cat',
     resave: false,
     saveUninitialized: false,
 }));
 
-//passport middleware
+// Passport Middleware
 app.use(passport.initialize());
 app.use(passport.session());
 
-
-//static folder
-app.use(express.static(path.join(__dirname, 'public')));
-
-const port = process.env.PORT || 3000;
-
-//dotenv.config({ path: './config/config.env'})
-if (process.env.NODE_ENV === 'development')  {
-    app.use(morgan('dev'))
+// Morgan (Logging for Development)
+if (process.env.NODE_ENV === 'development') {
+    app.use(morgan('dev'));
 }
 
+// Static Folder
+app.use(express.static(path.join(__dirname, 'public')));
+
+// Swagger API Docs
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./swagger.json');
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
-
-connectDB();
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-// Confirm that the /recipes routes are being used
+// Routes
 console.log('Using /recipes routes...');
 app.use('/', require('./routes'));
-app.use('/login', (req, res) => {
+app.use('/auth', require('./routes/auth'));
+
+// Simple Login Page Route
+app.get('/login', (req, res) => {
     res.send('Login Page');
 });
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
-app.use('/auth', require('./routes/auth'))
 
-app.listen(
-    port,
-    console.log(`Web Server is running in ${process.env.NODE_ENV} mode on port ${port}`)
-);
-
+// Port Setup
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+    console.log(`Web Server is running in ${process.env.NODE_ENV} mode on port ${port}`);
+});
